@@ -4,21 +4,24 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 [![GitHub Stars](https://img.shields.io/github/stars/truongvimit/leetcode?style=for-the-badge)](https://github.com/truongvimit/leetcode/stargazers)
 [![GitHub Forks](https://img.shields.io/github/forks/truongvimit/leetcode?style=for-the-badge)](https://github.com/truongvimit/leetcode/network)
+[![CLI Tool](https://img.shields.io/badge/CLI-Automation-brightgreen?style=for-the-badge&logo=terminal)](https://github.com/truongvimit/leetcode#-cli-tool)
+[![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-Automated-blue?style=for-the-badge&logo=github-actions)](https://github.com/truongvimit/leetcode/actions)
 
 > 📚 **Comprehensive collection of LeetCode problems solutions with detailed explanations**  
 > 💪 **Designed to help software engineers master coding interviews**  
-> 🎯 **Organized by patterns and data structures for efficient learning**
+> 🎯 **Organized by patterns and data structures for efficient learning**  
+> 🚀 **Professional CLI tool for automated workflow management**
 
 ---
 
 ## 📋 Table of Contents
 
+- [🚀 CLI Tool - Professional Workflow](#-cli-tool---professional-workflow)
+- [⚡ Quick Start](#-quick-start)
 - [🏗️ Project Structure](#-project-structure)
 - [📊 Progress Tracker](#-progress-tracker)
 - [🎯 Problem Categories](#-problem-categories)
 - [📚 Study Patterns](#-study-patterns)
-- [🚀 Quick Start](#-quick-start)
-- [📈 Difficulty Progression](#-difficulty-progression)
 - [💡 Interview Preparation](#-interview-preparation)
 - [🤝 Contributing](#-contributing)
 
@@ -62,18 +65,18 @@ leetcode/
 
 ## 📊 Progress Tracker
 
-| Category | Easy | Medium | Hard | Total | Completed |
-|----------|------|--------|------|-------|-----------|
-| **Arrays** | 0/156 | 0/234 | 0/45 | 0/435 | ![Progress](https://progress-bar.dev/0/?scale=435&title=progress&width=120&color=babaca&suffix=/435) |
-| **Strings** | 0/89 | 0/145 | 0/32 | 0/266 | ![Progress](https://progress-bar.dev/0/?scale=266&title=progress&width=120&color=babaca&suffix=/266) |
-| **Hash Maps** | 0/45 | 0/78 | 0/12 | 0/135 | ![Progress](https://progress-bar.dev/0/?scale=135&title=progress&width=120&color=babaca&suffix=/135) |
-| **Linked Lists** | 0/23 | 0/34 | 0/8 | 0/65 | ![Progress](https://progress-bar.dev/0/?scale=65&title=progress&width=120&color=babaca&suffix=/65) |
-| **Trees** | 0/45 | 0/89 | 0/23 | 0/157 | ![Progress](https://progress-bar.dev/0/?scale=157&title=progress&width=120&color=babaca&suffix=/157) |
-| **Graphs** | 0/12 | 0/67 | 0/34 | 0/113 | ![Progress](https://progress-bar.dev/0/?scale=113&title=progress&width=120&color=babaca&suffix=/113) |
-| **Dynamic Programming** | 0/34 | 0/156 | 0/89 | 0/279 | ![Progress](https://progress-bar.dev/0/?scale=279&title=progress&width=120&color=babaca&suffix=/279) |
-| **Backtracking** | 0/8 | 0/45 | 0/23 | 0/76 | ![Progress](https://progress-bar.dev/0/?scale=76&title=progress&width=120&color=babaca&suffix=/76) |
+| Category                | Easy  | Medium | Hard | Total | Completed                                                                                            |
+|-------------------------|-------|--------|------|-------|------------------------------------------------------------------------------------------------------|
+| **Arrays**              | 1/156 | 0/234  | 0/45 | 1/435 | ![Progress](https://progress-bar.dev/0/?scale=435&title=progress&width=120&color=babaca&suffix=/435) |
+| **Strings**             | 0/89  | 0/145  | 0/32 | 0/266 | ![Progress](https://progress-bar.dev/0/?scale=266&title=progress&width=120&color=babaca&suffix=/266) |
+| **Hash Maps**           | 0/45  | 0/78   | 0/12 | 0/135 | ![Progress](https://progress-bar.dev/0/?scale=135&title=progress&width=120&color=babaca&suffix=/135) |
+| **Linked Lists**        | 0/23  | 0/34   | 0/8  | 0/65  | ![Progress](https://progress-bar.dev/0/?scale=65&title=progress&width=120&color=babaca&suffix=/65)   |
+| **Trees**               | 0/45  | 0/89   | 0/23 | 0/157 | ![Progress](https://progress-bar.dev/0/?scale=157&title=progress&width=120&color=babaca&suffix=/157) |
+| **Graphs**              | 0/12  | 0/67   | 0/34 | 0/113 | ![Progress](https://progress-bar.dev/0/?scale=113&title=progress&width=120&color=babaca&suffix=/113) |
+| **Dynamic Programming** | 0/34  | 0/156  | 0/89 | 0/279 | ![Progress](https://progress-bar.dev/0/?scale=279&title=progress&width=120&color=babaca&suffix=/279) |
+| **Backtracking**        | 0/8   | 0/45   | 0/23 | 0/76  | ![Progress](https://progress-bar.dev/0/?scale=76&title=progress&width=120&color=babaca&suffix=/76)   |
 
-**🎯 Overall Progress: 0/1526 (0%)**
+**🎯 Overall Progress: 1/1526 (0%)**
 
 ---
 
@@ -199,53 +202,6 @@ leetcode/
 
 ---
 
-## 🚀 Quick Start
-
-### Prerequisites
-
-- ✅ Kotlin 1.8+
-- ✅ IntelliJ IDEA or VS Code
-- ✅ Basic understanding of data structures
-
-### Setup
-
-```bash
-# Clone the repository
-git clone https://github.com/truongvimit/leetcode.git
-cd leetcode
-
-# Open in IntelliJ IDEA
-idea .
-
-# Or open in VS Code
-code .
-```
-
-### Running Solutions
-
-```kotlin
-// Example: Two Sum problem
-fun main() {
-    val solution = TwoSum()
-    val nums = intArrayOf(2, 7, 11, 15)
-    val target = 9
-    
-    val result = solution.twoSum(nums, target)
-    println("Result: ${result.contentToString()}") // [0, 1]
-}
-```
-
-### Testing
-
-```bash
-# Run all tests
-./gradlew test
-
-# Run specific category tests
-./gradlew test --tests "*ArrayTest*"
-```
-
----
 
 ## 📈 Difficulty Progression
 
@@ -431,6 +387,6 @@ If this repository helped you land your dream job, please:
 
 **Happy Coding! 🚀**
 
-Made with ❤️ by [Truong Vim](https://github.com/truongvimit)
+Made with ❤️ by [truongvimit](https://github.com/truongvimit)
 
 </div>
