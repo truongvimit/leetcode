@@ -431,6 +431,6 @@ If this repository helped you land your dream job, please:
 
 **Happy Coding! 🚀**
 
-Made with ❤️ by [Truong Vim IT](https://github.com/truongvimit)
+Made with ❤️ by [Truong Vim](https://github.com/truongvimit)
 
 </div>
