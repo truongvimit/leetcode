@@ -18,11 +18,19 @@ echo -e "${CYAN}${BOLD}🚀 Building LeetCode CLI Tool${NC}"
 echo "================================================"
 
 # Check if Kotlin is installed
-if ! command -v kotlinc-jvm &> /dev/null; then
+KOTLINC=""
+if command -v kotlinc-jvm &> /dev/null; then
+    KOTLINC="kotlinc-jvm"
+elif command -v kotlinc &> /dev/null; then
+    KOTLINC="kotlinc"
+else
     echo -e "${RED}❌ Kotlin compiler not found!${NC}"
     echo -e "${YELLOW}💡 Install with: brew install kotlin${NC}"
+    echo -e "${YELLOW}💡 Or download from: https://kotlinlang.org/docs/command-line.html${NC}"
     exit 1
 fi
+
+echo -e "${GREEN}✅ Found Kotlin compiler: $KOTLINC${NC}"
 
 # Create build directory
 echo -e "${BLUE}📁 Creating build directory...${NC}"
@@ -30,7 +38,7 @@ mkdir -p build/cli
 
 # Compile the CLI tool
 echo -e "${BLUE}⚙️  Compiling CLI tool...${NC}"
-kotlinc-jvm -cp . src/cli/LeetCodeCLI.kt -include-runtime -d build/cli/leetcode-cli.jar
+$KOTLINC -cp . src/cli/LeetCodeCLI.kt -include-runtime -d build/cli/leetcode-cli.jar
 
 if [ $? -eq 0 ]; then
     echo -e "${GREEN}✅ CLI tool compiled successfully!${NC}"
