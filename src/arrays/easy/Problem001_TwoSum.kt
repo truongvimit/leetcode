@@ -12,20 +12,19 @@ package arrays.easy
 
 class Problem001_TwoSum {
 
-    fun twoSum(nums: IntArray, target: Int): IntArray {
-        val numToIndex = mutableMapOf<Int, Int>()
-
-        for (i in nums.indices) {
-            val complement = target - nums[i]
-
-            if (complement in numToIndex) {
-                return intArrayOf(numToIndex[complement]!!, i)
+    fun twoSum(nums: IntArray, target: Int): IntArray{
+        val n = nums.size
+        val intArray = IntArray(2)
+        for (i in 0 until n) {
+            for (j in (i+1) until n) {
+                if((nums[i]+nums[j]) == target){
+                    intArray[0] = i
+                    intArray[1] = j
+                    return intArray
+                }
             }
-
-            numToIndex[nums[i]] = i
         }
-
-        throw IllegalArgumentException("No solution")
+        throw IllegalArgumentException("No Solution")
     }
 }
 
