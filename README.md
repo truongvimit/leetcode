@@ -67,3 +67,9 @@ make clean    # Clean temp files
 ```
 
 **Perfect cho debug và development!** 🔥
+## 📊 Progress
+
+🎯 Progress: 6 problems solved!
+- 🟢 Easy: 2
+- 🟡 Medium: 3
+- 🔴 Hard: 1
