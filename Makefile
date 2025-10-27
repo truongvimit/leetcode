@@ -31,15 +31,21 @@ test:
 
 # Đẩy lên GitHub
 push:
-	@read -p "Commit message (or press Enter): " msg; \
-	git add .; \
-	if [ -z "$msg" ]; then \
-		git commit -m "🚀 Update solutions"; \
+	@echo "🔍 Checking for changes..."
+	@if [ -n "$$(git status --porcelain)" ]; then \
+		read -p "Commit message (or press Enter): " msg; \
+		git add .; \
+		if [ -z "$$msg" ]; then \
+			git commit -m "🚀 Update solutions"; \
+		else \
+			git commit -m "✨ $$msg"; \
+		fi; \
+		git push; \
+		echo "🎉 Pushed to GitHub!"; \
 	else \
-		git commit -m "✨ $msg"; \
-	fi; \
-	git push; \
-	echo "🎉 Pushed to GitHub!"
+		echo "ℹ️  No changes to commit. Repository is up to date!"; \
+		echo "💡 Make some changes first, then try again."; \
+	fi
 
 # Dọn dẹp
 clean:
