@@ -32,10 +32,11 @@ jobs:
           # Cập nhật README nếu có thay đổi
           if [ $TOTAL_COUNT -gt 0 ]; then
             # Update progress section in README
-            sed -i "s/🎯 Progress: [0-9]* problems/🎯 Progress: $TOTAL_COUNT problems/g" README.md
-          
-            # Tạo progress section nếu chưa có
-            if ! grep -q "🎯 Progress:" README.md; then
+            # Update existing progress line
+            if grep -q "🎯 Progress:" README.md; then
+              sed -i "s/🎯 Progress: [0-9]* problems/🎯 Progress: $TOTAL_COUNT problems/g" README.md
+            else
+              # Thêm progress section nếu chưa có
               echo "" >> README.md
               echo "## 📊 Progress" >> README.md
               echo "" >> README.md
@@ -53,7 +54,7 @@ jobs:
           
           if [ -n "$(git status --porcelain README.md)" ]; then
             git add README.md
-            git commit -m "📊 Auto-update: $(find src -name "*.kt" | wc -l) problems solved"
+            git commit -m "📊 Auto-update: $TOTAL_COUNT problems solved"
             git push
             echo "✅ README updated!"
           else
