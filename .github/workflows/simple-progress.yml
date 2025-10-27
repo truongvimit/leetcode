@@ -1,0 +1,57 @@
+name: 📊 Auto Update Progress
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  update-readme:
+    name: 📈 Update Progress in README
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 📊 Count problems and update README
+        run: |
+          # Đếm số problems theo độ khó
+          EASY_COUNT=$(find src -name "*.kt" -path "*/easy/*" | wc -l)
+          MEDIUM_COUNT=$(find src -name "*.kt" -path "*/medium/*" | wc -l) 
+          HARD_COUNT=$(find src -name "*.kt" -path "*/hard/*" | wc -l)
+          TOTAL_COUNT=$((EASY_COUNT + MEDIUM_COUNT + HARD_COUNT))
+          
+          echo "📊 Current stats: Easy=$EASY_COUNT, Medium=$MEDIUM_COUNT, Hard=$HARD_COUNT, Total=$TOTAL_COUNT"
+          
+          # Cập nhật README nếu có thay đổi
+          if [ $TOTAL_COUNT -gt 0 ]; then
+            # Update progress section in README
+            sed -i "s/🎯 Progress: [0-9]* problems/🎯 Progress: $TOTAL_COUNT problems/g" README.md
+          
+            # Tạo progress section nếu chưa có
+            if ! grep -q "🎯 Progress:" README.md; then
+              echo "" >> README.md
+              echo "## 📊 Progress" >> README.md
+              echo "" >> README.md
+              echo "🎯 Progress: $TOTAL_COUNT problems solved!" >> README.md
+              echo "- 🟢 Easy: $EASY_COUNT" >> README.md
+              echo "- 🟡 Medium: $MEDIUM_COUNT" >> README.md
+              echo "- 🔴 Hard: $HARD_COUNT" >> README.md
+            fi
+          fi
+
+      - name: 📝 Commit if changed
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          
+          if [ -n "$(git status --porcelain README.md)" ]; then
+            git add README.md
+            git commit -m "📊 Auto-update: $(find src -name "*.kt" | wc -l) problems solved"
+            git push
+            echo "✅ README updated!"
+          else
+            echo "ℹ️ No changes needed"
+          fi
