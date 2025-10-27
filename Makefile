@@ -40,6 +40,8 @@ push:
 		else \
 			git commit -m "✨ $$msg"; \
 		fi; \
+		echo "📥 Pulling latest changes..."; \
+		git pull --rebase origin main; \
 		git push; \
 		echo "🎉 Pushed to GitHub!"; \
 	else \
