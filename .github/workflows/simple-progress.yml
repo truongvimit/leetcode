@@ -9,6 +9,10 @@ jobs:
     name: 📈 Update Progress in README
     runs-on: ubuntu-latest
     
+    permissions:
+      contents: write  # Cần write permission để push changes
+      actions: read    # Để đọc workflow info
+    
     steps:
       - name: 📥 Checkout code
         uses: actions/checkout@v4
@@ -44,8 +48,8 @@ jobs:
 
       - name: 📝 Commit if changed
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
           
           if [ -n "$(git status --porcelain README.md)" ]; then
             git add README.md
