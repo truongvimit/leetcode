@@ -9,18 +9,22 @@
 
 package arrays.medium
 
+import kotlin.math.max
+import kotlin.math.min
+
 class Problem011_ContainerWithMostWater {
 
     fun maxArea(height: IntArray): Int {
         var result = 0
-        for (i in 0 until height.size){
-            for (j in i+1 until height.size){
-                val square = if (height[i] > height[j]){
-                    height[j] * (j - i)
-                }else{
-                    height[i] * (j - i)
-                }
-                if (square > result) result = square
+        var left = 0
+        var right = height.size - 1
+        while (left < right) {
+            val lineHeight = min(height[left], height[right])
+            result = max(result, lineHeight * (right - left))
+            if (height[left] < height[right]) {
+                left++
+            } else {
+                right--
             }
         }
         return result
